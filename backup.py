@@ -10,6 +10,7 @@ import shutil
 import os
 import zipfile
 
+#cmt
 CLIENT_ID = '209742625618-6t7ef6kfhu2e01hmi21n45b16hmqkj1m.apps.googleusercontent.com'
 CLIENT_SECRET = 'tcJpmqkWBBYYH9yMxjTCrO4z'
 REDIRECT_URI = 'http://encyclopedia.che.engin.umich.edu/publish.php'

@@ -179,6 +179,7 @@ def createMenuPages(mapping, path):
     if diskPath[-1] != "/":
       diskPath += "/"
     diskPath += 'menu.html'
+    # print(diskPath)
     # print "###SAVING TO DISK###"
     f = open(diskPath, 'w')
     f.write(menuSoup.prettify().encode('utf-8'))
