@@ -9,7 +9,7 @@ from stemming.porter2 import stem
 BASE_URL = 'http://encyclopedia.che.engin.umich.edu/'
 
 def getWordsFrom(name):
-  articleSoup = BeautifulSoup(open(name), 'lxml').find('div', id='article-content')
+  articleSoup = BeautifulSoup(open('export/'+name), 'lxml').find('div', id='article-content')
   words = []
   for i in range(1, 3):
     lists = (heading.text.split() * (3**(6-i)) for heading in articleSoup.find_all('h'+str(i)))

@@ -69,3 +69,7 @@ v4/*
 *.pyc
 Stylesheets/twocol.css
 *_metadata.json
+
+sftp-config\.json
+
+index\.html
