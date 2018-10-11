@@ -245,6 +245,7 @@ if __name__ == '__main__':
       shutil.copytree("Pages/", dstPath, ignore=ignoreDuringCopy)
     elif FORCE_PUBLISH == 'FORCE':
       os.makedirs(dstPath)
+      metadata = {"files": {}, "last_export_time": "2018-04-05T17:40:46.599424+00:00"}
 
     export_to_fs({'id': ROOT_PAGES_DIRECTORY_ID, 'path': dst}, metadata)
     sys.stdout.write(str(FILES_EXPORTED))
