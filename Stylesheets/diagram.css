@@ -1,0 +1,33 @@
+progress.progress {
+  display: none;
+}
+
+div.link-blanket-bay,
+div.hyperlink-connector {
+  display: none;
+  cursor: crosshair;
+  margin-bottom: 50px;
+}
+
+div#img-bg {
+  position: relative;
+}
+
+div.anchor-bay {
+  display: block;
+  position: absolute;
+  background-color: #4286f4;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+div.anchor-bay-helper {
+  display: block;
+  position: absolute;
+  border: solid 1px #4286f4;
+  border-radius: 3px;
+}
+
+div.link-row input {
+  display: inline-block;
+}

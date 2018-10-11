@@ -1,0 +1,264 @@
+body {
+  position: relative;
+  background-color: #002a61;
+}
+
+body, p, a, input, button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav.navbar, div.nav-area {
+  background-color: #002a61;
+  border-radius: 0px;
+}
+
+nav.navbar .navbar-brand h3 {
+  color: #DDD;
+  display: block;
+  text-align: center;
+}
+
+nav.navbar ul.navbar-nav {
+  margin-bottom: 5px;
+}
+
+nav.navbar ul.navbar-nav li.nav-item {
+  font-size: 14px;
+}
+
+nav.navbar ul.navbar-nav.big li.nav-item {
+  font-size: 18px;
+}
+
+nav.navbar ul.navbar-nav li.nav-item a {
+  color: #DDD;
+  padding-bottom: 2px;
+  font-weight: bold;
+}
+
+nav.navbar ul.navbar-nav li.nav-item a:hover {
+  color: #ffcb05;
+  border-color: #ffcb05;
+}
+
+nav.navbar ul.navbar-nav li.nav-item.active {
+  border-bottom: 3px solid white;
+  border-color: #ffcb05;
+}
+
+nav.navbar ul.navbar-nav li.nav-item.active a {
+  padding-bottom: 0px;
+}
+
+nav.navbar .input-group .input-group-btn .btn-primary {
+  border: none
+}
+
+nav.navbar .input-group input,
+nav.navbar .input-group button {
+  font-size: 13px;
+}
+
+.main-content {
+  margin-top: 90px;
+  background-color: white;
+}
+
+.main-content.title {
+  margin-top: 95px;
+}
+
+.main-content.title .title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  /*background-color: #DDD;*/
+  color: #002a61;
+}
+
+.main-content.title form {
+  margin-bottom: 30px;
+}
+
+
+.breadcrumbs {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.breadcrumbs h3,
+.breadcrumbs h5 {
+  display: inline-block;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+}
+
+.breadcrumbs a,
+.breadcrumbs i.fa {
+  color: #002a61;
+  font-weight: bold;
+}
+
+#article-content p.contributer {
+  margin-bottom: 0px;
+}
+
+#article-content h2.contributer {
+  margin-top: 30px;
+}
+
+#article-content table tr a {
+  color: #002a61;
+  font-weight: bold;
+}
+
+.carousel {
+  margin-bottom: 70px;
+  height: 400px;
+}
+
+.carousel .carousel-indicators li {
+  border-color: black;
+}
+
+.carousel .carousel-indicators li.active {
+  border-color: black;
+  background-color: black;
+}
+
+.sidebar-content {
+  background-color: #F0F0F0;
+  height: 100%;
+  position: fixed;
+  top: 90px;
+  bottom: 0;
+  right:0;
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+  padding-bottom: 50px;
+}
+
+.table-of-contents, .related-articles {
+  margin-left: 10px;
+}
+
+.table-of-contents .table-of-contents-title,
+.related-articles .related-articles-title {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-size: 16px;
+  color: #002a61;
+}
+
+.table-of-contents a,
+.related-articles a {
+  display: block;
+  color: #666;
+  padding-left: 10px;
+}
+
+.table-of-contents a.h2-lvl {
+  margin-left: 10px;
+  font-size: 15px;
+}
+.table-of-contents a.h3-lvl {
+  margin-left: 20px;
+  font-size: 14px;
+}
+.table-of-contents a.h4-lvl {
+  margin-left: 30px;
+  font-size: 13px;
+}
+.table-of-contents a.h5-lvl {
+  margin-left: 40px;
+  font-size: 12px;
+}
+.table-of-contents a.h6-lvl {
+  margin-left: 50px;
+  font-size: 11px;
+}
+
+.table-of-contents a.active {
+  font-weight: bolder;
+  border-left: solid 5px #002a61;
+  padding-left: 5px;
+  color: #002a61;
+}
+
+#article-contents h1 {
+  margin-bottom: 20px;
+}
+
+form.search input,
+form.search button {
+  border-radius: 0px;
+}
+
+form.publish-form {
+  height: 300px;
+}
+
+form.publish-form .input-group {
+  width: inherit
+}
+
+form.publish-form a.btn-primary,
+form.publish-form a.btn-primary:hover {
+  color: #FFF;
+}
+
+progress.progress {
+  margin-bottom: 30px;
+}
+
+#completed-message {
+  list-style-type:none;
+}
+
+.navigation-options,
+ul#completed-message li {
+  display: none;
+}
+
+.recent-articles {
+  margin-top: 50px;
+  color: #ffcb05;
+  font-size: 20px;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.results-space {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  min-height: 400px;
+}
+
+.results-space .reference-link {
+  color: #006621;
+  margin-bottom: 5px;
+}
+
+.results-space .result-link {
+  margin-top: 40px;
+}
+
+table.backuplist p {
+  margin-bottom: 0px;
+}
+
+table.menu-options p {
+  margin-bottom: 2px;
+}
+
+table.menu-options div.name p {
+  color: black;
+  margin-bottom: 0;
+}
+
+img.diagram.pointer {
+  cursor: pointer;
+}

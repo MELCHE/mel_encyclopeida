@@ -56,3 +56,16 @@ docs/_build/
 
 # PyBuilder
 target/
+
+Movies/*
+Pages/*
+Diagrams/*
+Images/*
+search/*
+v2/*
+v4/*
+.htaccess
+*.txt
+*.pyc
+Stylesheets/twocol.css
+*_metadata.json

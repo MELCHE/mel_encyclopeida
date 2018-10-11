@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Fav icon -->
+    <link rel='shortcut icon' href='http://encyclopedia.che.engin.umich.edu/Images/melicon.png' type='image/x-icon'/ >
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Custom fonts and CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://encyclopedia.che.engin.umich.edu/Stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="http://encyclopedia.che.engin.umich.edu/Stylesheets/diagram.css">
+    <title>Visual Encyclopedia of Chemical Engineering</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!--Navigation Bar-->
+      <div class="row nav-area">
+        <div class="col-sm-12">
+          <nav class="navbar navbar-fixed-top">
+            <!--Navigation Brand Goes Here-->
+            <div class="row">
+              <div class="col-xs-4">
+                <img src="http://encyclopedia.che.engin.umich.edu/Images/engineering_logo.svg" class="img-fluid">
+              </div>
+              <div class="col-xs-8">
+                <a class="navbar-brand" href="http://encyclopedia.che.engin.umich.edu">
+                  <h3>Encyclopedia of Chemical Engineering Equipment</h3>
+                </a>
+              </div>
+            </div>
+            <!--Navigation Links Go here-->
+            <div class="row">
+              <div class="col-xs-9">
+                <ul class="nav navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu">Home</a>
+                  </li>
+                  <li class="nav-item nav-item">
+                    <a class="nav-link active" href="http://encyclopedia.che.engin.umich.edu/Pages/menu.html">Menu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/contributors.html">Contributors</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/license.html">License</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Search box -->
+              <div class="col-xs-3">
+                <form class="float-xs-right" action="http://encyclopedia.che.engin.umich.edu/search.html">
+                  <div class="input-group search">
+                        <input type="text" class="form-control" placeholder="Search" name="q">
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary" type="submit">Go!</button>
+                        </span>
+                      </div>
+                </form>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="row main-content">
+        <div class="col-sm-7 offset-sm-1 main-content-body">
+          <p></p> 
+          <h1> Diagram Creator </h1>
+          <p> This tool is used to create interactive, hyperlinked diagrams for use on Application pages in the encyclopedia.</p>
+          <p><span class="btn btn-danger text-white" onclick="location.reload()">Start over</span></p>
+          <form id="upload-form">
+            <p> First, upload an image of the diagram. </p>
+            <div class="form-group">
+              <input type="file" name="img-upload" class="form-control" id="img-upload">
+            </div>
+            <div class="form-group">
+              <input type="button" class="btn btn-primary" value="Upload" id="img-upload-submit" onclick="uploadFile()">
+            </div> 
+            <progress class="progress progress-striped progress-animated" value="0" max="100"></progress>
+          </form>
+
+          
+          <div class="link-blanket-bay">
+            <p>Next, create hyperlink regions on the diagram. <span class="btn btn-warning" onclick="undoLink();">Undo</span>  <span class="btn btn-primary" onclick="extractLinkRegions();">Done</span> </p>
+            <div id="img-bg"></div>
+          </div>
+          <div class="hyperlink-connector">
+            <p>Finally, add a URL for each link region. <span class="btn btn-primary" onclick="submitHyperlinks()">Done</span></p>
+            <p class="text-danger hyperlink-connector-error-message" style="display:none">Make sure you enter <b> valid </b> URLs for <b> every </b> region. </p>
+            <ul></ul>
+          </div>
+          <div class="row output-options" style="display:none">
+            <div class="col-xs-6">
+              <h3>To Create a Section "menu" Page:</h3>
+              <ol>
+                <li><p><span class="btn btn-primary" onclick="downloadJSON()">Download</span> this code file.</p></li>
+                <li><p>Upload the file as-is to the correct location in Google Drive.</p></li>
+              </ol>
+            </div>
+            <div class="col-xs-6">  
+              <h3>To embed into a module:</h3>
+              <ol>
+                <li><p>Open the Google Document of the module</p></li>
+                <li><p>Place the insertion cursor (|) in the place you want to insert the diagram</p></li>
+                <li><p>From the toolbar, select "Insert" &gt; "Link". </p></li>
+                <li><p>In the text box that appears, enter the following "code" snippet for the "Text" field:</p><p class="bg-warning"><b>{{DIAGRAM: <span class="output-options-file-location"></span> }}</b></p></li>
+                <li><p>In the "Link" field enter the following URL:</p><p class="text-info">http://encyclopedia.che.engin.umich.edu</p><p>and then press enter</p></li>
+              </ol>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://encyclopedia.che.engin.umich.edu/Javascript/download.min.js"></script>
+    <script type="text/javascript" src="http://encyclopedia.che.engin.umich.edu/Javascript/diagram.js"></script>
+  </body>
+</html>
