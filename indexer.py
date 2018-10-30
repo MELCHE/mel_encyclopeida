@@ -1,5 +1,6 @@
 import os
 import sys
+import string
 import json
 from bs4 import BeautifulSoup
 from Counter import Counter
@@ -81,6 +82,8 @@ if __name__ == '__main__':
   letter = None
   fileHandle = None
   for word in sortedwords:
+    if not all(c in string.printable for c in word):
+      continue
     if letter != word[0]:
       letter = word[0]
       if fileHandle != None:
