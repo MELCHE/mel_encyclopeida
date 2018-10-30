@@ -176,7 +176,7 @@ if __name__ == '__main__':
   docRanks = sorted(docRanks, key=lambda x: x[1])
   docRanks.reverse()
   # Get a list of Paths
-  resultDocs = [documents[doc[0]]['path'] for doc in docRanks[:10]]
+  resultDocs = [documents[doc[0]]['path'] for doc in docRanks[:30]]
 
   # print resultDocs
 
