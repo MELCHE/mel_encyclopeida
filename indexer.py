@@ -10,7 +10,10 @@ BASE_URL = 'http://encyclopedia.che.engin.umich.edu/'
 
 def getWordsFrom(name):
   articleSoup = BeautifulSoup(open('export/'+name), 'lxml').find('div', id='article-content')
-  words = []
+  # find page titles
+  titles = name.split('/')[-1].split('.')[0].split()
+  # initialize word count matrix to 10X titles to give title higher weight
+  words = titles * 10
   for i in range(1, 3):
     lists = (heading.text.split() * (3**(6-i)) for heading in articleSoup.find_all('h'+str(i)))
     for l in lists:
