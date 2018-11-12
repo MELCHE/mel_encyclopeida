@@ -9,6 +9,7 @@ import operator
 
 BASE_URL = "http://encyclopedia.che.engin.umich.edu"
 TEMPLATE = open("menu_template.html", 'r').read()
+MAIN_TEMPLATE = open("main_menu_template.html", 'r').read()
 BACK_LINK_TEMPLATE = '''
   <h5>
     <a href="../menu.html">
@@ -78,7 +79,7 @@ def getRepresentativeImage(mapping, path):
     return '/'.join(path) + '/menu.jpeg'
   if '__is_dir__' in mapping:
     for key in mapping:
-      if key in ['__is_dir__', 'has_diagram']:
+      if key in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment']:
         continue
       return getRepresentativeImage(mapping[key], path + [key])
 
@@ -91,7 +92,7 @@ def getSubs(mapping):
   if not '__is_dir__' in mapping:
     return subs
   for child in mapping:
-    if child in ['__is_dir__', 'has_diagram']:
+    if child in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment']:
       continue
     subs.append(prettifyDirectoryName(child.replace('.html', '')))
   return subs
@@ -99,11 +100,26 @@ def getSubs(mapping):
 def createMenuPages(mapping, path):
   # print "creating menu page"
   # first create the menu page
-  menuSoup = BeautifulSoup(TEMPLATE, 'lxml')
-  
+  if len(path) != 0:
+    menuSoup = BeautifulSoup(TEMPLATE, 'lxml')
+  else:
+    menuSoup = BeautifulSoup(MAIN_TEMPLATE, 'lxml')
+
   backlinks = menuSoup.find('div', class_='breadcrumbs').div
-  article = menuSoup.find('div', id='article-content')
-  table = article.tbody
+
+  table = None
+  app_table = None
+  eq_table = None
+  if len(path) == 0:
+    app_article = menuSoup.find('div', id='application-article-content')
+    if app_article:
+      app_table = app_article.tbody
+    eq_article = menuSoup.find('div', id='equipment-article-content')
+    if eq_article:
+      eq_table = eq_article.tbody
+  else:
+    article = menuSoup.find('div', id='article-content')
+    table = article.tbody
 
 
   if len(path) != 0: 
@@ -143,16 +159,20 @@ def createMenuPages(mapping, path):
       diagram_soup.img['id'] = 'diagram_0'
       diagram_soup.script.string = 'var diagram_0 = ' + json.dumps(diagram_data) + ';'
 
-      table.insert_before(diagram_soup.div)
+      if len(path) == 0:
+        app_table.insert_before(diagram_soup.div)
+        eq_table.insert_before(diagram_soup.div)
+      else:
+        table.insert_before(diagram_soup.div)
 
     for child in childs:
-      if child in ['__is_dir__', 'has_diagram']:
+      if child in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment']:
         continue
       # print "going over child: " + child
       childSoup = BeautifulSoup(ROW_TEMPLATE, 'lxml')
       childSoup.img['src'] = getRepresentativeImage(childMapping[child], path + [child])
       if '__is_dir__' in childMapping[child]:
-        keys = [x for x in list(childMapping[child].keys()) if x not in ['__is_dir__', 'has_diagram']]
+        keys = [x for x in list(childMapping[child].keys()) if x not in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment']]
         # if there's only 1 child, 
         if len(keys) == 1 and '__is_dir__' not in childMapping[child][keys[0]]:
           childSoup.a['href'] = childMapping[child][keys[0]]['href']
@@ -172,6 +192,10 @@ def createMenuPages(mapping, path):
         childSoup.a['href'] = childMapping[child]['href']
         childSoup.h4.string = childMapping[child]['title']
         childSoup.p.string = childMapping[child]['leader']
+      if 'is_application' in childMapping[child]:
+        table = app_table
+      elif 'is_equipment' in childMapping[child]:
+        table = eq_table
       table.append(childSoup.tr)
 
     # save menuSoup to disk
@@ -186,7 +210,7 @@ def createMenuPages(mapping, path):
     f.close()
 
     for child in childMapping:
-      if child not in ['__is_dir__', 'has_diagram'] and '__is_dir__' in childMapping[child]:
+      if child not in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment'] and '__is_dir__' in childMapping[child]:
         createMenuPages(mapping, path + [child])
 
 def createFeaturedCarousel(featured):
@@ -228,7 +252,7 @@ def getDetails(mapping):
   else:
     l = []
     for key in mapping:
-      if key not in ['__is_dir__', 'has_diagram']:
+      if key not in ['__is_dir__', 'has_diagram', 'is_application', 'is_equipment']:
         l += getDetails(mapping[key])
     return l
 
