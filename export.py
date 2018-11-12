@@ -95,7 +95,8 @@ def filter_jsons(resources):
   jsons = []
   for r in resources:
     if r['mimeType'] == 'application/json':
-      r['name'] = 'menu.json'
+      if r['name'] != 'application.json' and r['name'] != 'equipment.json':
+        r['name'] = 'menu.json'
       jsons.append(r)
   return jsons
 
@@ -204,9 +205,14 @@ def export_to_fs(directory, metadata):
 
   # for every jsonReource, fetch the data and save it to disk
   for j in jsonResources:
-    jsontext = get_json_from_google(j['id'])
-    create_json_with(path + j['name'], jsontext)
-    dir_mapping['has_diagram'] = True
+    if j['name'] == 'application.json':
+      dir_mapping['is_application'] = True
+    elif j['name'] == 'equipment.json':
+      dir_mapping['is_equipment'] = True
+    else:
+      jsontext = get_json_from_google(j['id'])
+      create_json_with(path + j['name'], jsontext)
+      dir_mapping['has_diagram'] = True
 
   # for every folderResource, create a folder and recurse on the directory
   for f in folderResources:
