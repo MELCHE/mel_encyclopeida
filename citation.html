@@ -15,6 +15,11 @@
     <!-- Custom fonts and CSS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://encyclopedia.che.engin.umich.edu/Stylesheets/main.css">
+    <style type="text/css">
+    <!--
+     .tab { margin-left: 40px; }
+    -->
+    </style>
     <title>Visual Encyclopedia of Chemical Engineering</title>
   </head>
   <body>
@@ -45,12 +50,12 @@
                     <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/Pages/menu.html">Menu</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="http://encyclopedia.che.engin.umich.edu/video.html">Videos</a>
+                    <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/video.html">Videos</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/contributors.html">Contributors</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item active">
                     <a class="nav-link" href="http://encyclopedia.che.engin.umich.edu/citation.html">Citation</a>
                   </li>
                   <li class="nav-item">
@@ -60,7 +65,7 @@
               </div>
               <!-- Search box -->
               <div class="col-xs-3">
-                <form class="float-xs-right"  action="http://encyclopedia.che.engin.umich.edu/search.html">
+                <form class="float-xs-right"   action="http://encyclopedia.che.engin.umich.edu/search.html">
                   <div class="input-group search">
                         <input type="text" class="form-control" placeholder="Search" name="q">
                         <span class="input-group-btn">
@@ -77,29 +82,14 @@
       <!-- Main Content -->
       <div class="row main-content">
         <div class="col-xs-9 col-sm-7 offset-sm-1 main-content-body">
-          <!-- Return navigation -->
-          <div class="row breadcrumbs">
-            <div class="col-xs-12">
-              <h5><a href="../menu.html"><i class="fa fa-caret-left fa" aria-hidden="true"></i> <span class="back-link"></span></a></h5>
+            <div class="col-xs-12" id="article-content" style="padding-bottom: 50px;">
+              <p style="margin-top: 30px;">Need to cite an article from the Visual Encyclopedia of Chemical Engineering for a project, paper, or other document? Use the below template:</p>
+              <p class="tab">Visual Encyclopedia of Chemical Engineering: {article title} (n.d.), retrieved from {article link}
+</p>
+              <p>Here is an example citation that is properly formatted, using our <a href="http://encyclopedia.che.engin.umich.edu/Pages/EnergyTransfer/Chimneys/Chimneys.html"> Chimneys article</a>:</p>
+
+              <p class="tab">Visual Encyclopedia of Chemical Engineering: Chimneys (n.d.), retrieved from http://encyclopedia.che.engin.umich.edu/Pages/EnergyTransfer/Chimneys/Chimneys.html </p>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12" id="article-content"></div>
-          </div>
-        </div>
-        <div class="col-sm-3 offset-sm-1 sidebar-content">
-          <div class="row table-of-contents">
-            <p class="table-of-contents-title"><b>CONTENTS</b></p>
-            <div class="table-of-contents-links">
-              <!-- Will add links in here -->
-            </div>
-          </div>
-          <div class="row related-articles">
-            <p class="related-articles-title"><b>RELATED</b></p>
-            <div class="related-articles-links">
-              <!-- Will add links in here -->
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -108,7 +98,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://encyclopedia.che.engin.umich.edu/Javascript/scroll.js"></script>
-    <script src="http://encyclopedia.che.engin.umich.edu/Javascript/diagram-nav.js" type="text/javascript"></script>
   </body>
 </html>
