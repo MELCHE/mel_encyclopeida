@@ -112,6 +112,7 @@ def googleDriveCleaner(html, template):
       totalColSpan = 0
       for cell in cells:
         totalColSpan += int(cell['colspan'])
+      totalColSpan = max(totalColSpan, 1)
       colspan_alloc = 12/totalColSpan
       for cell in cells:
         grid_space = max(int(math.floor(colspan_alloc * int(cell['colspan']))), 1)
@@ -148,8 +149,11 @@ def googleDriveCleaner(html, template):
   details = {}
   article = outputDOM.find('div', id='article-content')
   leaderText = ''
-  if article.p != None:
-    leaderText = article.p.text.strip()
+  try:
+    if article.p != None:
+      leaderText = article.p.text.strip()
+  except AttributeError:
+    pass
   if 240 < len(leaderText): # don't let a leader be longer than a tweet
     leaderText = leaderText[:240]
   leaderText += '...'
